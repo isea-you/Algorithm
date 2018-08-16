@@ -1,0 +1,53 @@
+import java.util.Random;
+public class BubbleSort(){
+	public static int produceRandom(){
+		Random rand = new Random();
+		return rand.nextInt(1000);
+	}
+	
+	//这里是冒泡排序的方法
+	public void bubbleSort(int[] data){
+		for(int i = 1 ; i < data.length; i ++){
+			for(int j = 1; j < data.length - i ; j ++){
+				if(data[j - 1] > data[j]){
+					swap(data,i,j);
+				}
+			}
+		}
+	}
+	
+	//选择排序的方法：
+	public void selectionSort(int[] data){
+		for(int i = 0 ; i < data.length ; i ++){
+			int minIndex = i;
+			for(int j = i + 1; j < data.length; j ++){
+				if(data[j] < data[minIndex])
+					minIndex = j;
+				}
+			}
+			swap(data,i,minIndex);
+		}
+	}
+	
+	public void swap(int[] data, int i, int j){
+		int temp = data[i];
+		data[i] = data[j];
+		data[j] = temp;
+	}
+	
+	public static void main(String[] args){
+		int[] data = new int[100];
+		for(int i = 0; i < data.length; i ++){
+			data[i] = Sort.produceRandom();
+		}
+		//数组在排序之前的打印结果
+		Sort.printArray(data);
+		
+		Sort.bubbleSort(data);
+		//Sort.selectionSort(data);
+		
+		//数组在排序之后的打印结果
+		Sort.printArray(data);
+	}
+}
+		
